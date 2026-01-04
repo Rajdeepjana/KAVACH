@@ -1,47 +1,68 @@
-# Kavach Train System
+# KAVACH Train Control System
+An Arduino-based train signal and locomotive control simulation inspired by Indian Railways’ KAVACH safety system.
 
-**Arduino-based Indian Railways Train Signaling & Locomotive Simulation**
-
-This project simulates a train signaling system with:
-- Trackside signals (Green, Yellow, Red)
-- Locomotive dashboard with LCD displaying signal and speed
-- Physics engine simulating acceleration/deceleration
-- Yellow warning blink and speed limits (Indian freight train realistic)
-- Modular phase-wise development (Phase 1 → Phase 5)
+## Motivation: 
+Railway safety is critical in India. KAVACH (train collision avoidance system) prevents accidents by enforcing signals and speed control.
+This simulation demonstrates signal-based speed regulation, emergency braking, and realistic acceleration/deceleration, highlighting the importance of automated safety systems.
 
 ## Features
-- Real-time train control using Arduino
-- Robust serial communication between trackside and locomotive
-- Physics-based train motion
-- LCD dashboard with override indicators
-- Expandable to obstacle detection and emergency braking modules
+- Trackside signal sender (Green, Yellow, Red)
+- Locomotive receiver with LCD dashboard
+- Physics engine simulating train acceleration/deceleration
+- Speed enforcement based on signals
+- Serial telemetry for debugging
 
-## Repository Structure
-Kavach_Train_System/
-│
-├─ README.md
-├─ LICENSE        (MIT or Apache 2.0, shows open-source professionalism)
-├─ .gitignore     (ignore .vscode, .ino backups)
-│
-├─ Phase1_Trackside/   (sender arduino code)
-│    └─ trackside_v1.ino
-│
-├─ Phase2_Locomotive/  (receiver dashboard)
-│    └─ locomotive_v1.ino
-│
-├─ Phase3_Physics/     (inertia engine, acceleration simulation)
-│    └─ locomotive_physics.ino
-│
-├─ Phase4_LCD/         (dashboard display and warnings)
-│    └─ locomotive_lcd.ino
-│
-├─ Phase5_Final/       (all combined phases 1-5)
-│    └─ locomotive_final.ino
-│
-├─ Docs/               (pictures, block diagrams, TinkerCAD screenshots)
-│    └─ Kavach_BlockDiagram.png
-│    └─ Simulation_Screenshot.png
-│
-└─ Notes/              (your design thoughts or phase notes)
-     └─ Phase1-5_Notes.md
+## Folder Structure
+├── Phase1_Trackside
+├── Phase2_Locomotive
+├── Phase3_Physics
+├── Docs
+└── README.md
+
+## How to Run
+1. Clone the repository
+2. Open Arduino IDE
+3. Upload Trackside code to sender board
+4. Upload Locomotive code to receiver board
+
+## Example Output
+## LCD Display:
+-SIGNAL: GREEN
+SPD: 120
+
+SIGNAL: YELLOW  (blinking)
+SPD: 80 OVR
+
+SIGNAL: RED !!!
+SPD: 0 BRAKE
+
+## Serial Monitor (Telemetry):
+SIGNAL -> G
+SPD_ACTUAL: 120 | SPD_TARGET: 120 | DRIVER_REQ: 120
+
+SIGNAL -> Y
+SPD_ACTUAL: 80 | SPD_TARGET: 80 | DRIVER_REQ: 120 | OVERRIDE
+
+SIGNAL -> R
+SPD_ACTUAL: 0 | SPD_TARGET: 0 | DRIVER_REQ: 50 | OVERRIDE
+
+
+## Future Work
+Obstacle detection and automatic emergency braking
+
+Web-based monitoring dashboard
+
+GPS/GSM integration for real-time train tracking
+
+AI-based prediction for optimal train speed
+
+## About
+Developed by Rajdeep Jana
+
+
+
+
+
+
+
 
